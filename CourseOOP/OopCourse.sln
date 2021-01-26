@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Range", "Range\Range.csproj", "{E5ED620B-27E3-4449-A813-D839CE5BBD60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RangeTask", "Range\RangeTask.csproj", "{E5ED620B-27E3-4449-A813-D839CE5BBD60}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework", "Homework", "{36E08D80-8A59-43A8-BDE8-12EBC8EBAFF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E5ED620B-27E3-4449-A813-D839CE5BBD60} = {36E08D80-8A59-43A8-BDE8-12EBC8EBAFF6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75B89B02-5B4B-4B32-9F70-186DEBCF6216}

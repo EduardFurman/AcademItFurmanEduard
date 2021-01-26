@@ -1,12 +1,24 @@
-﻿using System;
-
-namespace Range
+﻿namespace RangeTask
 {
     class Range
     {
-        static void Main(string[] args)
+        public double From { get; set; }
+        public double To { get; set; }
+
+        public Range(double from, double to)
         {
-            Console.WriteLine("Hello World!");
+            From = from;
+            To = to;
+        }
+
+        public double GetLength()
+        {
+            return To - From;
+        }
+
+        public bool isInside(double number)
+        {
+            return number >= From && number <= To;
         }
     }
 }
