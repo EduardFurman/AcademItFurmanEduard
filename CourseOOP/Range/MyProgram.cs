@@ -14,7 +14,7 @@ namespace RangeTask
 
             Console.WriteLine($"Длина диапазона = {range.GetLength()}");
 
-            if (range.isInside(number))
+            if (range.IsInside(number))
             {
                 Console.WriteLine($"Число {number} принадлежит диапазону от {from} до {to}");
             }
@@ -37,19 +37,19 @@ namespace RangeTask
             Range range2 = new Range(from2, to2);
 
             // Задача 1. Пересечение
-            Range crossingInterval = new Range().GetIntersectionInterval(range1, range2);
+            Range crossingRange = new Range(0, 0).GetIntersectionRange(range1, range2);
 
-            if (crossingInterval == null)
+            if (crossingRange == null)
             {
                 Console.WriteLine($"Пересечений нет.");
             }
             else
             {
-                Console.WriteLine($"Пересечение от {crossingInterval.From} до {crossingInterval.To}");
+                Console.WriteLine($"Пересечение от {crossingRange.From} до {crossingRange.To}");
             }
 
             // Задача 2. Объединение
-            Range[] unionsArray = new Range().GetUnionIntervals(range1, range2);
+            Range[] unionsArray = new Range(0, 0).GetRangesUnion(range1, range2);
 
             if (unionsArray.Length > 1)
             {
@@ -66,7 +66,7 @@ namespace RangeTask
             }
 
             // Разность
-            Range[] differenceArray = new Range().GetIntervalDifference(range1, range2);
+            Range[] differenceArray = new Range(0, 0).GetRangesDifference(range1, range2);
 
             if (differenceArray.Length == 0)
             {

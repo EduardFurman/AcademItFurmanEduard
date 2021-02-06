@@ -5,6 +5,7 @@ namespace RangeTask
     class Range
     {
         public double From { get; set; }
+
         public double To { get; set; }
 
         public Range(double from, double to)
@@ -13,23 +14,18 @@ namespace RangeTask
             To = to;
         }
 
-        public Range()
-        {
-
-        }
-
         public double GetLength()
         {
             return To - From;
         }
 
-        public bool isInside(double number)
+        public bool IsInside(double number)
         {
             return number >= From && number <= To;
         }
 
         // Пересечение
-        public Range GetIntersectionInterval(Range range1, Range range2)
+        public Range GetIntersectionRange(Range range1, Range range2)
         {
             if (range1.To <= range2.From || range2.To <= range1.From)
             {
@@ -49,13 +45,13 @@ namespace RangeTask
                 to = range2.To;
             }
 
-            Range crossingInterval = new Range(from, to);
+            Range crossingRange = new Range(from, to);
 
-            return crossingInterval;
+            return crossingRange;
         }
 
         // Объединение
-        public Range[] GetUnionIntervals(Range range1, Range range2)
+        public Range[] GetRangesUnion(Range range1, Range range2)
         {
             Range[] arrayRanges = new Range[1];
 
@@ -88,7 +84,7 @@ namespace RangeTask
         }
 
         // Разность
-        public Range[] GetIntervalDifference(Range range1, Range range2)
+        public Range[] GetRangesDifference(Range range1, Range range2)
         {
             Range[] arrayRanges = new Range[2];
 
