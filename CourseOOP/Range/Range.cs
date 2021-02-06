@@ -25,7 +25,7 @@ namespace RangeTask
         }
 
         // Пересечение
-        public Range GetIntersectionRange(Range range1, Range range2)
+        public Range GetCrossingRange(Range range1, Range range2)
         {
             if (range1.To <= range2.From || range2.To <= range1.From)
             {
@@ -53,16 +53,16 @@ namespace RangeTask
         // Объединение
         public Range[] GetRangesUnion(Range range1, Range range2)
         {
-            Range[] arrayRanges = new Range[1];
+            Range[] rangesArray = new Range[1];
 
             if (range1.To < range2.From || range2.To < range1.From)
             {
-                Array.Resize(ref arrayRanges, 2);
+                Array.Resize(ref rangesArray, 2);
 
-                arrayRanges[0] = range1;
-                arrayRanges[1] = range2;
+                rangesArray[0] = range1;
+                rangesArray[1] = range2;
 
-                return arrayRanges;
+                return rangesArray;
             }
 
             double from = range1.From;
@@ -78,32 +78,32 @@ namespace RangeTask
                 to = range1.To;
             }
 
-            arrayRanges[0] = new Range(from, to);
+            rangesArray[0] = new Range(from, to);
 
-            return arrayRanges;
+            return rangesArray;
         }
 
         // Разность
         public Range[] GetRangesDifference(Range range1, Range range2)
         {
-            Range[] arrayRanges = new Range[2];
+            Range[] rangesArray = new Range[2];
 
             if (range1.To <= range2.From)
             {
-                arrayRanges[0] = range1;
-                arrayRanges[1] = range2;
+                rangesArray[0] = range1;
+                rangesArray[1] = range2;
             }
 
             if (range1.From - range2.From == 0 && range1.To - range2.To == 0)
             {
-                Array.Resize(ref arrayRanges, 0);
+                Array.Resize(ref rangesArray, 0);
 
-                return arrayRanges;
+                return rangesArray;
             }
 
             if (range1.From == range2.From)
             {
-                Array.Resize(ref arrayRanges, 1);
+                Array.Resize(ref rangesArray, 1);
 
                 double from = range2.To;
                 double to = range1.To;
@@ -114,27 +114,27 @@ namespace RangeTask
                     to = range2.To;
                 }
 
-                arrayRanges[0] = new Range(from, to);
+                rangesArray[0] = new Range(from, to);
 
-                return arrayRanges;
+                return rangesArray;
             }
 
             if (range1.To == range2.To)
             {
-                Array.Resize(ref arrayRanges, 1);
+                Array.Resize(ref rangesArray, 1);
 
                 double from = range1.From;
                 double to = range2.From;
 
-                arrayRanges[0] = new Range(from, to);
+                rangesArray[0] = new Range(from, to);
 
-                return arrayRanges;
+                return rangesArray;
             }
 
-            arrayRanges[0] = new Range(range1.From, range2.From);
-            arrayRanges[1] = new Range(range1.To, range2.To);
+            rangesArray[0] = new Range(range1.From, range2.From);
+            rangesArray[1] = new Range(range1.To, range2.To);
 
-            return arrayRanges;
+            return rangesArray;
         }
     }
 }

@@ -37,7 +37,7 @@ namespace RangeTask
             Range range2 = new Range(from2, to2);
 
             // Задача 1. Пересечение
-            Range crossingRange = new Range(0, 0).GetIntersectionRange(range1, range2);
+            Range crossingRange = new Range(0, 0).GetCrossingRange(range1, range2);
 
             if (crossingRange == null)
             {
@@ -49,36 +49,36 @@ namespace RangeTask
             }
 
             // Задача 2. Объединение
-            Range[] unionsArray = new Range(0, 0).GetRangesUnion(range1, range2);
+            Range[] union = new Range(0, 0).GetRangesUnion(range1, range2);
 
-            if (unionsArray.Length > 1)
+            if (union.Length > 1)
             {
-                Console.WriteLine($"В объединении {unionsArray.Length} интервалов:");
+                Console.WriteLine($"В объединении {union.Length} интервалов:");
 
-                for (int i = 0; i < unionsArray.Length; i++)
+                for (int i = 0; i < union.Length; i++)
                 {
-                    Console.WriteLine($"От {unionsArray[i].From} до {unionsArray[i].To}");
+                    Console.WriteLine($"От {union[i].From} до {union[i].To}");
                 }
             }
             else
             {
-                Console.WriteLine($"Объединенный интвервал от {unionsArray[0].From} до {unionsArray[0].To}");
+                Console.WriteLine($"Объединенный интвервал от {union[0].From} до {union[0].To}");
             }
 
             // Разность
-            Range[] differenceArray = new Range(0, 0).GetRangesDifference(range1, range2);
+            Range[] difference = new Range(0, 0).GetRangesDifference(range1, range2);
 
-            if (differenceArray.Length == 0)
+            if (difference.Length == 0)
             {
                 Console.WriteLine("Разность интервалов равна нулю.");
             }
-            else if (differenceArray.Length == 1)
+            else if (difference.Length == 1)
             {
-                Console.WriteLine($"Разность интвервалов от {differenceArray[0].From} до {differenceArray[0].To}");
+                Console.WriteLine($"Разность интвервалов от {difference[0].From} до {difference[0].To}");
             }
             else
             {
-                Console.WriteLine($"Разность представлена двумя интервалами от {differenceArray[0].From} до {differenceArray[0].To} и от {differenceArray[1].From} до {differenceArray[1].To}");
+                Console.WriteLine($"Разность представлена двумя интервалами от {difference[0].From} до {difference[0].To} и от {difference[1].From} до {difference[1].To}");
             }
         }
     }
