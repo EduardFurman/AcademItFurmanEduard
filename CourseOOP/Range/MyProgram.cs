@@ -49,11 +49,11 @@ namespace RangeTask
             }
 
             // Задача 2. Объединение
-            Range[] union = new Range(0, 0).GetUnion(range1, range2);
+            Range[] union = range1.GetUnion(range2);
 
             if (union.Length > 1)
             {
-                Console.WriteLine($"В объединении {union.Length} интервалов:");
+                Console.WriteLine($"В объединении {union.Length} интервала:");
 
                 for (int i = 0; i < union.Length; i++)
                 {

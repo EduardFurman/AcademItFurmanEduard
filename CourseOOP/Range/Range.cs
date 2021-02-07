@@ -40,36 +40,21 @@ namespace RangeTask
         }
 
         // Объединение
-        public Range[] GetUnion(Range range1, Range range2)
+        public Range[] GetUnion(Range range)
         {
-            Range[] rangesArray = new Range[1];
-
-            if (range1.To < range2.From || range2.To < range1.From)
+            if (To < range.From || range.To < From)
             {
-                Array.Resize(ref rangesArray, 2);
-
-                rangesArray[0] = range1;
-                rangesArray[1] = range2;
-
-                return rangesArray;
+                return new Range[]
+                    {
+                        new Range(From, To),
+                        new Range(range.From, range.To)
+                    };
             }
 
-            double from = range1.From;
-            double to = range2.To;
+            double from = Math.Min(From, range.From);
+            double to = Math.Max(To, range.To);
 
-            if (range1.From > range2.From)
-            {
-                from = range2.From;
-            }
-
-            if (range1.To > range2.To)
-            {
-                to = range1.To;
-            }
-
-            rangesArray[0] = new Range(from, to);
-
-            return rangesArray;
+            return new Range[] { new Range(from, to) };
         }
 
         // Разность
