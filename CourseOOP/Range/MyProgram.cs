@@ -66,7 +66,7 @@ namespace RangeTask
             }
 
             // Разность
-            Range[] difference = new Range(0, 0).GetDifference(range1, range2);
+            Range[] difference = range1.GetDifference(range2);
 
             if (difference.Length == 0)
             {

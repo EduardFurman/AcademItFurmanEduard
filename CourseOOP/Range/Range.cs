@@ -45,10 +45,10 @@ namespace RangeTask
             if (To < range.From || range.To < From)
             {
                 return new Range[]
-                    {
-                        new Range(From, To),
-                        new Range(range.From, range.To)
-                    };
+                {
+                    new Range(From, To),
+                    new Range(range.From, range.To)
+                };
             }
 
             double from = Math.Min(From, range.From);
@@ -58,57 +58,31 @@ namespace RangeTask
         }
 
         // Разность
-        public Range[] GetDifference(Range range1, Range range2)
+        public Range[] GetDifference(Range range)
         {
-            Range[] rangesArray = new Range[2];
-
-            if (range1.To <= range2.From)
+            if (From == range.From)
             {
-                rangesArray[0] = range1;
-                rangesArray[1] = range2;
+                double from = Math.Min(To, range.To);
+                double to = Math.Max(To, range.To);
+
+                return new Range[] { new Range(from, to) };
             }
 
-            if (range1.From - range2.From == 0 && range1.To - range2.To == 0)
+            if (To == range.To)
             {
-                Array.Resize(ref rangesArray, 0);
-
-                return rangesArray;
+                return new Range[] { new Range(From, range.From) };
             }
 
-            if (range1.From == range2.From)
+            double from1 = From;
+            double to1 = range.From;
+            double from2 = Math.Min(To, range.To);
+            double to2 = Math.Max(To, range.To);
+
+            return new Range[]
             {
-                Array.Resize(ref rangesArray, 1);
-
-                double from = range2.To;
-                double to = range1.To;
-
-                if (range1.To < range2.To)
-                {
-                    from = range1.To;
-                    to = range2.To;
-                }
-
-                rangesArray[0] = new Range(from, to);
-
-                return rangesArray;
-            }
-
-            if (range1.To == range2.To)
-            {
-                Array.Resize(ref rangesArray, 1);
-
-                double from = range1.From;
-                double to = range2.From;
-
-                rangesArray[0] = new Range(from, to);
-
-                return rangesArray;
-            }
-
-            rangesArray[0] = new Range(range1.From, range2.From);
-            rangesArray[1] = new Range(range1.To, range2.To);
-
-            return rangesArray;
+                new Range(from1, to1),
+                new Range(from2, to2)
+            };
         }
     }
 }
