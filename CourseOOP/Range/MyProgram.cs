@@ -39,47 +39,20 @@ namespace RangeTask
             // Задача 1. Пересечение
             Range crossingRange = range1.GetCrossing(range2);
 
-            if (crossingRange == null)
-            {
-                Console.WriteLine($"Пересечений нет.");
-            }
-            else
-            {
-                Console.WriteLine($"Пересечение от {crossingRange.From} до {crossingRange.To}");
-            }
+            Console.Write("Диапазоны пересекаются: ");
+            Range.Print(crossingRange);
 
             // Задача 2. Объединение
             Range[] union = range1.GetUnion(range2);
 
-            if (union.Length > 1)
-            {
-                Console.WriteLine($"В объединении {union.Length} интервала:");
-
-                for (int i = 0; i < union.Length; i++)
-                {
-                    Console.WriteLine($"От {union[i].From} до {union[i].To}");
-                }
-            }
-            else
-            {
-                Console.WriteLine($"Объединенный интвервал от {union[0].From} до {union[0].To}");
-            }
+            Console.Write("Диапазон объединения: ");
+            Range.Print(union);
 
             // Разность
             Range[] difference = range1.GetDifference(range2);
 
-            if (difference.Length == 0)
-            {
-                Console.WriteLine("Разность интервалов равна нулю.");
-            }
-            else if (difference.Length == 1)
-            {
-                Console.WriteLine($"Разность интвервалов от {difference[0].From} до {difference[0].To}");
-            }
-            else
-            {
-                Console.WriteLine($"Разность представлена двумя интервалами от {difference[0].From} до {difference[0].To} и от {difference[1].From} до {difference[1].To}");
-            }
+            Console.Write("Диапазон разности: ");
+            Range.Print(difference);
         }
     }
 }

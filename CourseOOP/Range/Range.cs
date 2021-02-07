@@ -84,5 +84,28 @@ namespace RangeTask
                 new Range(from2, to2)
             };
         }
+
+        // Печать
+        public static void Print(Range[] range)
+        {
+            if (range.Length == 2)
+            {
+                Console.WriteLine($"({range[0].From}, {range[0].To}), ({range[1].From}, {range[1].To})");
+                return;
+            }
+
+            Console.WriteLine($"({range[0].From}, {range[0].To})");
+        }
+
+        public static void Print(Range range)
+        {
+            if (range == null)
+            {
+                Console.WriteLine("Пересечений нет.");
+                return;
+            }
+
+            Console.WriteLine($"({range.From}, {range.To})");
+        }
     }
 }
