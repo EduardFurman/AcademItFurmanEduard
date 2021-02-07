@@ -25,33 +25,22 @@ namespace RangeTask
         }
 
         // Пересечение
-        public Range GetCrossingRange(Range range1, Range range2)
+
+        public Range GetCrossing(Range range)
         {
-            if (range1.To <= range2.From || range2.To <= range1.From)
+            if (To <= range.From || range.To <= From)
             {
                 return null;
             }
 
-            double from = range1.From;
-            double to = range1.To;
+            double from = Math.Max(From, range.From);
+            double to = Math.Min(To, range.To);
 
-            if (range1.From <= range2.From)
-            {
-                from = range2.From;
-            }
-
-            if (range1.To > range2.To)
-            {
-                to = range2.To;
-            }
-
-            Range crossingRange = new Range(from, to);
-
-            return crossingRange;
+            return new Range(from, to);
         }
 
         // Объединение
-        public Range[] GetRangesUnion(Range range1, Range range2)
+        public Range[] GetUnion(Range range1, Range range2)
         {
             Range[] rangesArray = new Range[1];
 
@@ -84,7 +73,7 @@ namespace RangeTask
         }
 
         // Разность
-        public Range[] GetRangesDifference(Range range1, Range range2)
+        public Range[] GetDifference(Range range1, Range range2)
         {
             Range[] rangesArray = new Range[2];
 

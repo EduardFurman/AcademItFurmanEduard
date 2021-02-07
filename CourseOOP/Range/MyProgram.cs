@@ -37,7 +37,7 @@ namespace RangeTask
             Range range2 = new Range(from2, to2);
 
             // Задача 1. Пересечение
-            Range crossingRange = new Range(0, 0).GetCrossingRange(range1, range2);
+            Range crossingRange = range1.GetCrossing(range2);
 
             if (crossingRange == null)
             {
@@ -49,7 +49,7 @@ namespace RangeTask
             }
 
             // Задача 2. Объединение
-            Range[] union = new Range(0, 0).GetRangesUnion(range1, range2);
+            Range[] union = new Range(0, 0).GetUnion(range1, range2);
 
             if (union.Length > 1)
             {
@@ -66,7 +66,7 @@ namespace RangeTask
             }
 
             // Разность
-            Range[] difference = new Range(0, 0).GetRangesDifference(range1, range2);
+            Range[] difference = new Range(0, 0).GetDifference(range1, range2);
 
             if (difference.Length == 0)
             {
